@@ -1,0 +1,23 @@
+---
+id: 201712-intro-to-ci
+base_name: 201712-intro-to-ci
+tags:
+- rabbit
+- continuous integration
+- continuous deployment
+presentation_date: 2017-12-07
+version: 2017.12.05.1
+licenses:
+- MIT
+slideshare_id:
+speaker_deck_id: 
+ustream_id: 
+vimeo_id: 
+youtube_id: 
+author:
+  markup_language: :rd
+  name: Giovanni Sakti
+  email: giosakti@gmail.com
+  rubygems_user: giosakti
+  slideshare_user:
+  speaker_deck_user: giosakti 

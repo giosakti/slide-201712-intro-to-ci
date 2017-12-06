@@ -1,0 +1,401 @@
+= Introduction to Continuous Integration
+
+% : subtitle
+%    Part 2
+: author
+   Giovanni Sakti
+: institution
+   Starqle
+% : content-source
+%    id_ruby
+% : date
+%    2017-11-01
+: theme
+   starqle
+
+= Continuous Integration
+
+(('tag:center'))Continuous Integration
+
+== properties
+  : hide-title
+    true
+
+= Continuous Integration
+
+(('tag:center'))What is Continuous Integration?
+
+== properties
+  : hide-title
+    true
+
+= Continuous Integration
+
+(('tag:center'))A development ((*practice*))
+# It's not actually a software or an automated system
+
+= Continuous Integration
+
+(('tag:center'))Developers ((*commit*)) code into 'mainline' several times ((*a day*))
+
+= Continuous Integration
+
+(('tag:center'))Each commit is verified by an ((*automated build*))
+
+= Continuous Integration
+
+(('tag:center'))Detect integration problem early and ((*fix it*)) ASAP
+# Because you’re integrating so frequently, there is significantly less back-tracking to discover where things went wrong (more easy to locate), so you can spend more time building features.
+
+= Continuous Integration
+
+* A development ((*practice*))
+* Developers ((*commit*)) code into 'mainline' several times ((*a day*))
+* Each commit is verified by an ((*automated build*))
+* Detect integration problem early and ((*fix it*)) ASAP
+
+= Continuous Integration
+
+(('tag:center'))We will now call continuous integration as ((*CI*)) for brevity
+
+= Why CI?
+
+(('tag:center'))Why CI?
+
+== properties
+  : hide-title
+    true
+
+= Why CI?
+
+(('tag:center'))Let's take a look at this following scenario.
+
+= Why CI?
+
+(('tag:center'))Imagine there are several developers working together on a project.
+
+= Why CI?
+
+(('tag:center'))Alice, Bob and Eve.
+
+= Why CI?
+
+(('tag:center'))Alice wants to work on a certain feature of the project.
+
+= Why CI?
+
+(('tag:center'))First, Alice will have to take a copy from the main code repository to her local computer.
+
+= Why CI?
+
+(('tag:center'))Alice can then work on her feature.
+
+= Why CI?
+
+(('tag:center'))Meanwhile Bob just finished his own work and integrate his code with the main repository.
+
+= Why CI?
+
+(('tag:center'))Then Eve also wants to work on a new feature, therefore she copy the newest version from the main repository.
+
+= Why CI?
+
+(('tag:center'))3 days later, Alice finished her work and try to integrate her work with main.
+
+= Why CI?
+
+(('tag:center'))She founds out that her copy now conflicts with main repository because of Bob changes.
+
+= Why CI?
+
+(('tag:center'))Now imagine that there are 10 more developers and a feature may take more than one week to complete.
+
+= Why CI?
+
+(('tag:center'))Can you sense the problem now?
+
+= Why CI?
+
+(('tag:center'))This problem is precisely what CI wants to solve.
+
+= Why CI?
+
+(('tag:center'))The ((*longer*)) that each developer local copy is ((*detached*)) from the main repository, the ((*greater*)) the ((*risk*)) of integration conflicts to occurs during reintegration.
+
+= Why CI?
+
+Conflict means:
+* Developers may have to ((*redo*)) their work
+* Time and effort will be ((*wasted*))
+* May lead to ((*integration hell*)) if developer local copy is detached for too long
+
+= Why CI?
+
+(('tag:center'))Time to solve integration hell may ((*exceed*)) the time to make the original changes.
+
+= How to do CI
+
+(('tag:center'))Ok, so how can we do CI?
+
+== properties
+  : hide-title
+    true
+
+= How to do CI
+
+(('tag:center'))The one key principle of CI is to integrate ((*early*)) and ((*often*)).
+
+= How to do CI
+
+(('tag:center'))It is said that developers must integrate ((*at least*)) once daily.
+
+= How to do CI
+
+(('tag:center'))The actual workflow may ((*vary*)) between companies, because of tools used and other factors.
+
+= How to do CI
+
+(('tag:center'))But let us discuss this typical workflow of doing CI.
+
+= Typical CI Workflow
+
+1. Developers ((*check out*)) code into their private workspaces
+
+2. When done, runs ((*unit test*)) on their local copy
+
+3. Developers then ((*commit*)) the changes to the main repo
+
+= Typical CI Workflow (cont'd)
+
+4. CI server monitors main repo and ((*checks out*)) changes when they occur
+
+5. CI server ((*builds*)) the code and runs unit & integration ((*tests*))
+
+6. CI server ((*releases*)) deployable artifacts and assign build label for testing
+
+= Typical CI Workflow (cont'd)
+
+7. CI server ((*informs*)) the team whether the build and tests are failed or succeed
+
+8. Developers ((*fixes*)) any failure at earliest opportunity
+
+9. Start from beginning
+
+= Key Principles
+
+(('tag:center'))Key Principles
+
+== properties
+  : hide-title
+    true
+
+= Key Principles
+
+(('tag:center'))There are key principles that is critical to do effective CI
+
+= Key Principles (cont'd)
+
+1. Maintain a ((*single source*)) repository
+
+2. Automate the ((*build*))
+
+3. Make the build ((*self-testing*))
+
+= Key Principles (cont'd)
+
+4. Everyone ((*commits*)) to the mainline every day (small chunks of commit). Use feature toggles as necessary
+# a feature should be ((*broken down*)) so that each part can be done in < 1 day
+
+5. Every commit to the mainline should be ((*built*))
+
+= Key Principles (cont'd)
+
+6. ((*Fix*)) broken build immediately
+
+7. Keep the build ((*fast*))
+
+8. Test in a ((*clone*)) of the production environment
+
+= Key Principles (cont'd)
+
+9. Make it easy to get the latest ((*deliverables*))
+
+10. Everyone can ((*see*)) the ((*results*)) of the latest build
+
+11. Automate ((*deployment*))
+
+= Team Responsibilities
+
+(('tag:center'))Deriving from the principles, there are also responsibilites that the team should comply.
+
+== properties
+  : hide-title
+    true
+
+= Team Responsibilities
+
+1. Commit frequently
+
+2. Don't commit broken code
+
+3. Don't commit untested code
+
+= Team Responsibilities (cont'd)
+
+4. Don't commit when the build is broken
+
+5. Don't go home after commit until the system builds
+
+= Benefits
+
+(('tag:center'))Benefits
+
+== properties
+  : hide-title
+    true
+
+= Benefits
+
+(('tag:center'))There are immense benefits in implementing proper CI
+
+= Benefits
+
+(('tag:center'))Integration conflicts and bugs are detected early and ((*easier*)) to track down\n\n
+# due to small changesets
+
+= Benefits
+
+(('tag:center'))Spend less time debugging and more time ((*adding features*))
+
+= Benefits
+
+(('tag:center'))Stop waiting to find out your code's going to work
+
+= Benefits
+
+(('tag:center'))Increase ((*visibility*)) enabling greater communication
+
+= Benefits
+
+(('tag:center'))Constant ((*availability*)) of a "current" build for testing, demo or release purpose
+
+= Benefits
+
+(('tag:center'))Avoid last-minute chaos at release date
+# when everyone to commit their slightly incompatible versions
+
+= Benefits
+
+(('tag:center'))When tests fail or a bug emerges and revert is necessary, only a small number of changes are lost
+# because integration happens frequently
+
+= Benefits
+
+(('tag:center'))CI is ((*cheap*))
+
+= Benefits
+
+(('tag:center'))Not doing CI is expensive
+
+= Benefits
+
+(('tag:center'))Not doing CI is expensive:\n\n
+(('tag:center'))Failure in doing integration may lead a project ((*off-schedule*)) or cause it to ((*fail*)) altogether
+
+= Challenges
+
+(('tag:center'))Challenges
+
+== properties
+  : hide-title
+    true
+
+= Challenges
+
+(('tag:center'))There are challenges involved when implementing CI.
+
+= Challenges
+
+(('tag:center'))Especially if our team is not prepared.
+
+= Challenges
+
+(('tag:center'))Constructing an automated build and test suite requires a ((*considerable work*)).
+
+= Challenges
+
+(('tag:center'))While CI can be done without automated system, the ((*cost*)) of QA will be ((*high*)) if build and tests must be done ((*manually*)) and frequently.
+
+= Challenges
+
+(('tag:center'))CI may ((*not valuable*)) if the scope of the project is small or contains untestable legacy code.
+
+= Challenges
+
+(('tag:center'))The value of CI depends heavily on the ((*quality*)) of the ((*tests*)).
+
+= Challenges
+
+(('tag:center'))Larger teams means that new code is constantly added to the integration queue.\n\n
+(('tag:center'))Builds queueing up can ((*slow*)) down everyone.
+
+= Challenges
+
+(('tag:center'))With smaller commmits, ((*partial*)) code for a feature can be pushed and may make integration test fail.\n
+(('sub:But this can be rectify with feature toggles'))
+
+= Continuous Delivery
+
+(('tag:center'))Continuous Delivery
+
+== properties
+  : hide-title
+    true
+
+= Continuous Delivery
+
+(('tag:center'))Continuous Delivery or ((*CD*)) further extends the CI by making sure the mainline always in a ((*state*)) that can be ((*deployed*)) to production.
+
+= Continuous Delivery
+
+(('tag:center'))CD makes actual deployment process ((*very rapid*)).
+
+= Continuous Delivery
+
+(('tag:center'))Good build that was tested and verified by CI is ((*automatically released*)).
+
+= Continuous Delivery
+
+(('tag:center'))Adopting CI & CD means: ((*reduce risks*)) and ((*catch bugs*)) quickly.
+
+= Continuous Delivery
+
+(('tag:center'))Also makes a company ((*quicker*)) in adapting to business requirements and user needs.
+
+= Principles of CD
+
+(('tag:center'))Principles of CD
+
+== properties
+  : hide-title
+    true
+
+= Principles of CD
+
+(('tag:center'))Your team prioritizes keeping the software ((*deployable*)) over working on new features
+
+= Principles of CD
+
+(('tag:center'))Anybody can get fast, automated feedback on the ((*production readiness*)) of their systems anytime somebody makes a change to them
+
+= Principles of CD
+
+(('tag:center'))You can perform ((*push-button deployment*)) of any version of the software to any environment on demand
+
+= Thanks
+
+(('tag:center'))Thanks!
+
+== properties
+  : hide-title
+    true
